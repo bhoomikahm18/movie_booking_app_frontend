@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function MovieItem() {
+function MovieItem(props) {
     return (
         <Card
             sx={{
@@ -15,13 +15,13 @@ function MovieItem() {
                 },
             }}
         >
-            <img height={"50%"} width="100%" src='' alt='' />
+            <img height={"50%"} width="100%" src={props.posterUrl} alt={props.title} />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-
+                    {props.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-
+                    {new Date(props.releaseDate).toDateString()}
                 </Typography>
             </CardContent>
             <CardActions>
