@@ -6,10 +6,11 @@ const dummyArray = ["Memory", "Brahmastra", "Forest grump"]
 
 function Header() {
     const [value, setValue] = useState(0);
+    const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         getAllMovies()
-            .then((data) => console.log(data))
+            .then((data) => setMovies(data.movies))
             .catch((err) => console.log(err));
     }, []);
 
@@ -23,7 +24,7 @@ function Header() {
                     <Box width={'50%'} margin={'auto'}>
                         <Autocomplete
                             freeSolo
-                            options={dummyArray.map((option) => option)}
+                            options={movies && movies.map((option) => option.title)}
                             renderInput={(params) => <TextField sx={{ input: { color: "white" } }} variant='standard' {...params} placeholder="Search Across Movies" />}
                         />
                     </Box>
