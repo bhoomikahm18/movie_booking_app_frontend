@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-axios.default.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "http://localhost:5000";
 root.render(
   <BrowserRouter>
     <App />

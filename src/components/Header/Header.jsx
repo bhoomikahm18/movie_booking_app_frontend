@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import MovieIcon from '@mui/icons-material/Movie';
 import { getAllMovies } from '../../api_helpers/api_helpers';
 import { Link } from 'react-router-dom';
-const dummyArray = ["Memory", "Brahmastra", "Forest grump"]
+// const dummyArray = ["Memory", "Brahmastra", "Forest grump"]
 
 function Header() {
     const [value, setValue] = useState(0);
