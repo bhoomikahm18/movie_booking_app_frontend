@@ -14,6 +14,12 @@ function UserProfile() {
     }, []);
     console.log(bookings);
 
+    function handleDelete(id) {
+        deleteBooking(id)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
+    };
+
     return (
         <Box width={"100%"} display="flex">
             <Fragment>
@@ -92,7 +98,7 @@ function UserProfile() {
                                             Date: {new Date(booking.date).toDateString()}
                                         </ListItemText>
                                         <IconButton
-                                            // onClick={() => handleDelete(booking._id)}
+                                            onClick={() => handleDelete(booking._id)}
                                             color="error"
                                         >
                                             <DeleteForeverIcon />
