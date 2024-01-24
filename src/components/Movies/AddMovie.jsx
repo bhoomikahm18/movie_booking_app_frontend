@@ -7,6 +7,7 @@ import {
     Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { addMovie } from "../../api_helpers/api_helpers";
 const labelProps = {
     mt: 1,
     mb: 1,
@@ -30,7 +31,9 @@ function AddMovie() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(inputs, actors);
-        
+        addMovie({ ...inputs, actor: actors })
+            .then((res) => console.log(res))
+            .catch(err => console.log(err))
     };
     return (
         <div>
