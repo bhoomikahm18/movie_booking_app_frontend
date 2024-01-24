@@ -88,3 +88,16 @@ export async function getUserBooking() {
     const resData = await res.data;
     return resData;
 };
+
+export async function deleteBooking(id) {
+    const res = await axios
+        .delete(`/booking/${id}`)
+        .catch((err) => console.log(err));
+
+    if (res.status !== 200) {
+        return console.log("Unepxected Error");
+    }
+
+    const resData = await res.data;
+    return resData;
+};
