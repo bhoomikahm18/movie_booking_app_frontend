@@ -14,6 +14,7 @@ const userSlice = createSlice({
         },
     }
 })
+
 const adminSlice = createSlice({
     name: "auth",
     initialState: { isLoggedIn: false },

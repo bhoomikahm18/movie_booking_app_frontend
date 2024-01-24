@@ -16,17 +16,18 @@ export async function getAllMovies() {
 };
 
 export async function sendUserAuthRequest(data, signup) {
-    const res = await
-        axios.post(`/user/${signup ? "signup" : "login"}`, {
+    const res = await axios
+        .post(`/user/${signup ? "signup" : "login"}`, {
             name: signup ? data.name : "",
             email: data.email,
-            password: data.password
+            password: data.password,
         })
-            .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
 
     if (res.status !== 200 && res.status !== 201) {
-        return console.log("Unexpected Error Occured");
+        console.log("Unexpected Error Occurred");
     }
+
     const resData = await res.data;
     return resData;
 
