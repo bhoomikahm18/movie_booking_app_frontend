@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { deleteBooking, getUserBooking } from '../api_helpers/api_helpers.jsx';
+import { deleteBooking, getUserBooking, getUserDetails } from '../api_helpers/api_helpers.jsx';
 import { Box, IconButton, List, ListItem, ListItemText, Typography } from '@mui/material';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever"
@@ -11,8 +11,12 @@ function UserProfile() {
         getUserBooking()
             .then((res) => setBookings(res.bookings))
             .catch((err) => console.log(err));
+
+        getUserDetails()
+            .then((res) => setUser(res.user))
+            .catch((err) => console.log(err));
     }, []);
-    console.log(bookings);
+    // console.log(bookings);
 
     function handleDelete(id) {
         deleteBooking(id)
