@@ -11,7 +11,7 @@ function Admin() {
         console.log(data);
         dispatch(adminActions.login())
         localStorage.setItem("AdminID", data.id);
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("Token", data.token);
     }
 
     function getData(data) {

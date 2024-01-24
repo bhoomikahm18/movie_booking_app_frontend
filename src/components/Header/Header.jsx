@@ -3,9 +3,15 @@ import React, { useEffect, useState } from 'react';
 import MovieIcon from '@mui/icons-material/Movie';
 import { getAllMovies } from '../../api_helpers/api_helpers';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { adminActions, userActions } from '../../store';
 // const dummyArray = ["Memory", "Brahmastra", "Forest grump"]
 
 function Header() {
+    const dispatch = useDispatch();
+    const isAdminLoggedIn = useSelector((state) => state.admin.isLoggedIn)
+    const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn)
+
     const [value, setValue] = useState(0);
     const [movies, setMovies] = useState([]);
 
@@ -14,6 +20,10 @@ function Header() {
             .then((data) => setMovies(data.movies))
             .catch((err) => console.log(err));
     }, []);
+
+    function logout(isAdmin) {
+        dispatch(isAdmin ? adminActions.logout() : userActions.logout());
+    }
 
     return (
         <>
@@ -32,12 +42,23 @@ function Header() {
                     <Box display={"flex"}>
                         <Tabs value={value} onChange={(e, val) => setValue(val)} textColor='inherit' indicatorColor='secondary'>
                             <Tab LinkComponent={Link} to="/movies" label="Movies" />
-                            <Tab LinkComponent={Link} to="/admin" label="Admin" />
-                            <Tab LinkComponent={Link} to="/auth" label="Auth" />
+                            {!isAdminLoggedIn && !isUserLoggedIn && <>
+                                <Tab LinkComponent={Link} to="/admin" label="Admin" />
+                                <Tab LinkComponent={Link} to="/auth" label="Auth" />
+                            </>}
+                            {isUserLoggedIn && <>
+                                <Tab LinkComponent={Link} to="/user" label="Profile" />
+                                <Tab onClick={() => logout(false)} LinkComponent={Link} to="/" label="Logout" />
+                            </>}
+                            {isAdminLoggedIn && <>
+                                <Tab LinkComponent={Link} to="/add" label="Add Movie" />
+                                <Tab LinkComponent={Link} to="/admin" label="Profile" />
+                                <Tab onClick={() => logout(true)} LinkComponent={Link} to="/" label="Logout" />
+                            </>}
                         </Tabs>
                     </Box>
                 </Toolbar>
-            </AppBar>
+            </AppBar >
         </>
     )
 }

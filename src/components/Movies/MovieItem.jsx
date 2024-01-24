@@ -29,7 +29,7 @@ function MovieItem(props) {
                     variant="contained"
                     fullWidth
                     LinkComponent={Link}
-                    to={`/booking/`}
+                    to={`/booking/${props.id}`}
                     sx={{
                         margin: "auto",
                         bgcolor: "#2b2d42",
