@@ -101,3 +101,13 @@ export async function deleteBooking(id) {
     const resData = await res.data;
     return resData;
 };
+
+export async function getUserDetails() {
+    const id = localStorage.getItem("userId");
+    const res = await axios.get(`/user/${id}`).catch((err) => console.log(err));
+    if (res.status !== 200) {
+        return console.log("Unexpected Error");
+    }
+    const resData = await res.data;
+    return resData;
+};
