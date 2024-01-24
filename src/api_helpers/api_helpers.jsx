@@ -75,3 +75,16 @@ export async function newBooking(data) {
     const resData = await res.data;
     return resData;
 };
+
+export async function getUserBooking() {
+    const id = localStorage.getItem("userID");
+    const res = await axios
+        .get(`/user/bookings/${id}`)
+        .catch((err) => console.log(err));
+
+    if (res.status !== 200) {
+        return console.log("Unexpected Error");
+    }
+    const resData = await res.data;
+    return resData;
+};
