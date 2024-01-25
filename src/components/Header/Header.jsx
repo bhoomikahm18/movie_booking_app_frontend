@@ -1,4 +1,4 @@
-import { AppBar, Autocomplete, Box, Tab, Tabs, TextField, Toolbar } from '@mui/material'
+import { AppBar, Autocomplete, Box, IconButton, Tab, Tabs, TextField, Toolbar } from '@mui/material'
 import React, { useEffect, useState } from 'react';
 import MovieIcon from '@mui/icons-material/Movie';
 import { getAllMovies } from '../../api_helpers/api_helpers';
@@ -30,7 +30,9 @@ function Header() {
             <AppBar position='sticky' sx={{ bgcolor: "#2b2d42" }}>
                 <Toolbar>
                     <Box width={'20%'}>
-                        <MovieIcon />
+                        <IconButton LinkComponent={Link} to="/">
+                            <MovieIcon />
+                        </IconButton>
                     </Box>
                     <Box width={'50%'} margin={'auto'}>
                         <Autocomplete

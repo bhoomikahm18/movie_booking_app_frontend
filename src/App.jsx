@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header/Header.jsx';
 import HomePage from './components/HomePage/HomePage.jsx';
 import Movies from './components/Movies/Movies.jsx';
-import Admin from './components/Admin/Admin.jsx';
+import Admin from './components/Auth/Admin.jsx';
 import Auth from './components/Auth/Auth.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
