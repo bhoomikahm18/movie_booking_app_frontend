@@ -12,13 +12,14 @@ function AuthForm(props) {
         password: "",
     });
     const [isSignup, setIsSignup] = useState(false);
-    const handleChange = (e) => {
+    
+    function handleChange(e) {
         setInputs((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
         }));
     };
-    const handleSubmit = (e) => {
+    function handleSubmit(e) {
         e.preventDefault();
         props.onSubmit({ inputs, signup: props.isAdmin ? false : isSignup });
     };

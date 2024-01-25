@@ -13,7 +13,7 @@ function Header() {
     const isAdminLoggedIn = useSelector((state) => state.admin.isLoggedIn)
     const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn)
 
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState();
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState();
 
@@ -27,7 +27,7 @@ function Header() {
         dispatch(isAdmin ? adminActions.logout() : userActions.logout());
     }
 
-    const handleChange = (e, val) => {
+    function handleChange(e, val){
         setSelectedMovie(val);
         const movie = movies.find((mov) => mov.title === val);
         console.log(movie);
@@ -66,7 +66,7 @@ function Header() {
                             </>}
                             {isAdminLoggedIn && <>
                                 <Tab LinkComponent={Link} to="/add" label="Add Movie" />
-                                <Tab LinkComponent={Link} to="/admin" label="Profile" />
+                                <Tab LinkComponent={Link} to="/user-admin" label="Profile" />
                                 <Tab onClick={() => logout(true)} LinkComponent={Link} to="/" label="Logout" />
                             </>}
                         </Tabs>

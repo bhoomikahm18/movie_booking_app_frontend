@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { addMovie } from "../../api_helpers/api_helpers";
+import { Link } from "react-router-dom";
 const labelProps = {
     mt: 1,
     mb: 1,
@@ -113,6 +114,7 @@ function AddMovie() {
                         sx={{ mr: "auto" }}
                     />
                     <Button
+                    LinkComponent={Link} to="/user-admin"
                         type="submit"
                         variant="contained"
                         sx={{
