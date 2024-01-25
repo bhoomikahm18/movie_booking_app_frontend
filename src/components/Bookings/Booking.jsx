@@ -1,7 +1,7 @@
 import { Button, FormLabel, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getMovieDetails, newBooking } from "../../api_helpers/api_helpers";
 
 function Booking() {
@@ -94,7 +94,7 @@ function Booking() {
                                         value={inputs.date}
                                         onChange={handleChange}
                                     />
-                                    <Button type="submit" sx={{ mt: 3 }}>
+                                    <Button LinkComponent={Link} to="/user" type="submit" sx={{ mt: 3 }}>
                                         Book Now
                                     </Button>
                                 </Box>
